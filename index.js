@@ -1,16 +1,17 @@
-const app = require('./src/app');
+const app = require('./src/app.js');
 const pool = require('./src/pool');
 
 pool
   .connect({
-    user: 'postgres',
     host: 'localhost',
-    database: 'refresh',
-    password: 's159951s',
     port: 5432,
+    database: 'socialnetwork',
+    user: 'postgres',
+    password: 's159951s',
   })
   .then(() => {
-    app().listen(3000, () => {
-      console.log('server is on port ', 3000);
+    app().listen(3005, () => {
+      console.log('Listening on port 3005');
     });
-  });
+  })
+  .catch((err) => console.error(err));
